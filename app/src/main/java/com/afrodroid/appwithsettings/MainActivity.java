@@ -1,6 +1,7 @@
 package com.afrodroid.appwithsettings;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,7 +34,11 @@ public class MainActivity extends AppCompatActivity {
         //Save default value for settings toggle to SharedPreferences
         android.support.v7.preference.PreferenceManager.setDefaultValues(
                 this, R.xml.preferences, false);
-
+//get the value of the sharedPreference for this switch
+        SharedPreferences sharedPref =
+                android.support.v7.preference.PreferenceManager.getDefaultSharedPreferences(this);
+        Boolean switchPref = sharedPref.getBoolean(SettingsActivity.KEY_PREF_EXAMPLE_SWITCH, false);
+        Toast.makeText(this, switchPref.toString(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
