@@ -28,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        //Save default value for settings toggle to SharedPreferences
+        android.support.v7.preference.PreferenceManager.setDefaultValues(
+                this, R.xml.preferences, false);
+
     }
 
     @Override
